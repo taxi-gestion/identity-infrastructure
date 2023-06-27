@@ -49,6 +49,19 @@ resource "aws_cognito_user_pool" "main" {
   //  sms_authentication_message = "Votre code d'authentification est {####}"
   //  sms_verification_message   = "Votre identifiant est {username} et votre code temporaire est {####}"
 
+  schema {
+    attribute_data_type      = "String"
+    developer_only_attribute = false
+    mutable                  = true
+    name                     = "planning_identifier"
+    required                 = false
+
+    string_attribute_constraints {
+      min_length = 0
+      max_length = 32
+    }
+  }
+
   tags = local.tags
 }
 
